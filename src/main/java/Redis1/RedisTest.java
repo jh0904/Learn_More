@@ -14,15 +14,17 @@ import java.util.Set;
  */
 public class RedisTest {
 	Jedis jedis = new Jedis ("119.23.10.198");
+
 	//测试连通?
 	@Test
-	public void test(){
-		if(jedis.ping ().equals ("PONG")){
+	public void test() {
+		if (jedis.ping ().equals ("PONG")) {
 			System.out.println ("连接成功");
-		}else{
+		} else {
 			System.out.println ("连接失败");
 		}
 	}
+
 	//键的操作
 	@Test
 	public void test1() throws InterruptedException {
@@ -39,23 +41,49 @@ public class RedisTest {
 		System.out.println (k11);*/
 		//expire key 秒钟：为给定的key设置过期时间
 		//jedis.select (0);
-		jedis.set ("k1","asd");
-		jedis.keys ("*").stream ().forEach ((a)-> System.out.print (a+"\t"));
-		jedis.expire ("k1",10);
-		System.out.println ("k2------->"+jedis.ttl ("k2"));
+		jedis.set ("k1", "asd");
+		jedis.keys ("*").stream ().forEach ((a) -> System.out.print (a + "\t"));
+		jedis.expire ("k1", 10);
+		System.out.println ("k2------->" + jedis.ttl ("k2"));
 		//ttl key 查看还有多少秒过期，-1表示永不过期，-2表示已过期
 		for (int i = 0; i < 20; i++) {
 			Thread.sleep (1000);
 			System.out.println (jedis.ttl ("k1"));
 		}
-		jedis.keys ("*").stream ().forEach ((a)-> System.out.print (a+"\t"));
+		jedis.keys ("*").stream ().forEach ((a) -> System.out.print (a + "\t"));
 		//type key 查看你的key是什么类型
+		System.out.println ();
 		System.out.println ("查看类型");
 		System.out.println (jedis.type ("k2"));
 	}
 
+	//实现Redis中String的操作
 	@Test
-	public void test2(){
+	public void test2() {
+
+	}
+
+	//实现Redis中list的操作
+	@Test
+	public void test3() {
+
+	}
+
+	//实现Redis中set的操作
+	@Test
+	public void test4() {
+
+	}
+
+	//实现Redis中hash的操作
+	@Test
+	public void test5() {
+
+	}
+
+	//实现Redis中zset的操作
+	@Test
+	public void test6() {
 
 	}
 }
