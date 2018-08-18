@@ -50,23 +50,87 @@ public class RedisTest {
 			Thread.sleep (1000);
 			System.out.println (jedis.ttl ("k1"));
 		}
-		jedis.keys ("*").stream ().forEach ((a) -> System.out.print (a + "\t"));
+		jedis.keys ("*").forEach ((a) -> System.out.print (a + "\t"));
 		//type key 查看你的key是什么类型
 		System.out.println ();
 		System.out.println ("查看类型");
 		System.out.println (jedis.type ("k2"));
 	}
 
+	public static void show(){
+		Jedis jedis = new Jedis ("119.23.10.198");
+		jedis.keys ("*").forEach ((a) -> System.out.print (a + "\t"));
+	}
+
+	//深入学习键的操作
+	@Test
+	public void demo(){
+		//重命名
+		//String rename = jedis.rename ("k4", "kkkkk");
+		//System.out.println (rename);
+		//计算长度
+		//System.out.println (jedis.llen ("k1"));
+
+	}
+
+
 	//实现Redis中String的操作
 	@Test
 	public void test2() {
+		//set/get/del/append/strlen
+
+		System.out.println (jedis.set ("magic", "ma"));
+		System.out.println (jedis.get ("magic"));
+		jedis.del ("magic");
+		jedis.keys ("*").forEach ((a) -> System.out.print (a + "\t"));
+		System.out.println (jedis.set ("magic", "ma"));
+		System.out.println (jedis.append ("magic", "heheda"));//返回的是字符串长度
+		System.out.println (jedis.get ("magic"));
+		System.out.println (jedis.strlen ("magic"));
+		//Incr/decr/incrby/decrby,一定要是数字才能进行加减
+
+		jedis.set ("sy","521");
+		System.out.println (jedis.incr ("sy"));
+		System.out.println (jedis.decr ("sy"));
+		System.out.println (jedis.incrBy ("sy", 2));
+		System.out.println (jedis.decrBy ("sy", 2));
+		//getrange/setrange
+
+		System.out.println (jedis.getrange ("magic", 0, 2));
+
+		//setex(set with expire)键秒值/setnx(set if not exist)
+
+		jedis.set ("magic","hehe");
+		System.out.println (jedis.setex ("magic", 5, "magic"));
+		//就是动态设值
+		for (int i = 0; i <100 ; i++) {
+			jedis.keys ("*").forEach ((a) -> System.out.print (a + "\t"));
+			System.out.println ();
+		}
+		//当不存在时设值
+		System.out.println (jedis.setnx ("k123", "123"));
+		//mset/mget/msetnx
+		//mset:同时设置一个或多个 key-value 对。
+		System.out.println (jedis.mset ("b1", "1", "b2", "2", "b3", "3"));
+		jedis.keys ("*").forEach ((a) -> System.out.print (a + "\t"));
+
+		//getset(先get再set)
+		//getset:将给定 key 的值设为 value ，并返回 key 的旧值(old value)。
+		System.out.println (jedis.getSet ("magic", "123"));
 
 	}
 
 	//实现Redis中list的操作
 	@Test
 	public void test3() {
+		//lpush/rpush/lrange
+		System.out.println (jedis.lpush ("list", "1", "2", "3"));
+		System.out.println (jedis.rpush ("list", "4"));
+		System.out.println (jedis.lrange ("list", 0, -1));
 
+		//lpop/rpop
+		//lindex，按照索引下标获得元素(从上到下)
+		//llen
 	}
 
 	//实现Redis中set的操作
