@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--1、空参构造创建对象-->
+    <bean id="user" class="com.spring.beans.User" scope="prototype">
+        <property name="name" value="magic"/>
+        <property name="age" value="23"/>
+    </bean>
+    <!--&lt;!&ndash;2、静态工厂创建
+        调用createUser方法创建User2的对象
+    &ndash;&gt;
+    <bean name="user2" class="com.spring.create.UserFactory"  factory-method="createUser"/>
+
+
+    &lt;!&ndash;3、实例工厂创建User&ndash;&gt;
+    <bean name="user3" class="com.spring.create.UserFactory" factory-bean="userFactory" factory-method="createUser2"/>
+    <bean name="userFactory" class="com.spring.create.UserFactory"/>-->
+</beans>
