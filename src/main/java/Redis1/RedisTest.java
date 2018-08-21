@@ -1,6 +1,6 @@
 package Redis1;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
