@@ -49,6 +49,7 @@ public class Demo {
 		/*
 		* 单例就是True
 		* 多例就是false，可以看无参构造，都使用了两次
+		* 绝大多数单例，但是再和Struts2时候使用多例
 		* */
 		System.out.println (user == user1);
 	}

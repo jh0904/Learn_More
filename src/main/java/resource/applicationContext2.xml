@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--Spring属性注入-->
+    <!--set方法注入-->
+    <bean name="user" class="com.spring.beans.User">
+        <property name="name" value="tom"/>
+        <property name="age" value="23"/>
+        <!--引用类型注入-->
+        <property name="car" ref="car"/>
+    </bean>
+    <!--将car配置到容器中-->
+    <bean name="car" class="com.spring.beans.Car">
+        <property name="name" value="兰博基尼" />
+        <property name="color" value="黄色"/>
+    </bean>
+    <!--构造函数注入-->
+    <bean name="user1" class="com.spring.beans.User">
+        <!--index 指定位置 type指定类型注入-->
+        <constructor-arg name="name" value="五五开" index="0" type="java.lang.String"/>
+        <constructor-arg name="car" ref="car" index="1"/>
+    </bean>
+
+    <!--P：命名空间注入-->
+
+</beans>

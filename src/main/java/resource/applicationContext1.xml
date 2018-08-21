@@ -5,7 +5,13 @@
 
 
     <!--1、空参构造创建对象-->
-    <bean id="user" class="com.spring.beans.User" scope="prototype">
+    <!--
+        配置一个方法作为生命周期的销毁方法.spring容器在关闭并销毁所有容器中的对象之前调用.
+	    destory-method
+        配置一个方法作为生命周期初始化方法.spring会在对象创建之后立即调用.
+	    init-method
+	 -->
+    <bean id="user" class="com.spring.beans.User">
         <property name="name" value="magic"/>
         <property name="age" value="23"/>
     </bean>
@@ -18,4 +24,6 @@
     &lt;!&ndash;3、实例工厂创建User&ndash;&gt;
     <bean name="user3" class="com.spring.create.UserFactory" factory-bean="userFactory" factory-method="createUser2"/>
     <bean name="userFactory" class="com.spring.create.UserFactory"/>-->
+    <!--分模块配置-->
+    <import resource="classpath:"/>
 </beans>

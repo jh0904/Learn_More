@@ -10,9 +10,30 @@ package com.spring.beans;
 public class User {
 	private String name;
 	private int age ;
+	private Car car;
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
 
 	public User() {
 		System.out.println ("User...");
+	}
+	public User(Car car, String name) {
+		System.out.println ("--------->User(Car car, String name)");
+		this.name = "香菇";
+		this.car = car;
+	}
+
+
+	public User(String name, Car car) {
+		System.out.println ("User(String name, Car car)");
+		this.name = name;
+		this.car = car;
 	}
 
 	public String getName() {
@@ -36,6 +57,7 @@ public class User {
 		return "User{" +
 				"name='" + name + '\'' +
 				", age=" + age +
+				", car=" + car +
 				'}';
 	}
 }
