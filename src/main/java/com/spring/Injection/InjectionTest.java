@@ -27,4 +27,51 @@ public class InjectionTest {
 		User user = (User) applicationContext.getBean ("user1");
 		System.out.println (user);
 	}
+
+
+	@Test
+	public void test2(){
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext ("applicationContext2.xml");
+
+		User user = (User) applicationContext.getBean ("user3");
+		System.out.println (user);
+	}
+	@Test
+	public void test3(){
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext ("applicationContext2.xml");
+
+		User user = (User) applicationContext.getBean ("user4");
+		System.out.println (user);
+	}
+
+	@Test
+	public void t1(){
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext ("applicationContext2.xml");
+
+		CollectionBean cb = (CollectionBean) applicationContext.getBean ("cb");
+		System.out.println (cb);
+	}
+
+	@Test
+	public void t2(){
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext ("applicationContext2.xml");
+
+		CollectionBean cb = (CollectionBean) applicationContext.getBean ("list");
+		System.out.println (cb);
+	}
+
+	@Test
+	public void t3(){
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext ("applicationContext2.xml");
+
+		CollectionBean cb = (CollectionBean) applicationContext.getBean ("map");
+		System.out.println (cb);
+	}
+	@Test
+	public void t4(){
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext ("applicationContext2.xml");
+
+		CollectionBean cb = (CollectionBean) applicationContext.getBean ("properties");
+		System.out.println (cb);
+	}
 }

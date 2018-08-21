@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 
     <!--Spring属性注入-->
@@ -14,7 +15,7 @@
     </bean>
     <!--将car配置到容器中-->
     <bean name="car" class="com.spring.beans.Car">
-        <property name="name" value="兰博基尼" />
+        <property name="name" value="兰博基尼"/>
         <property name="color" value="黄色"/>
     </bean>
     <!--构造函数注入-->
@@ -24,6 +25,63 @@
         <constructor-arg name="car" ref="car" index="1"/>
     </bean>
 
-    <!--P：命名空间注入-->
+    <!--P：命称空间注入
+        1.xmlns:p="http://www.springframework.org/schema/p"
+        2.使用p  p:name="magic"
+        3.对象类型 p:car-ref="car"
+    -->
+    <bean name="user3" class="com.spring.beans.User" p:name="magic" p:age="22" p:car-ref="car"/>
+    <!--
+        SPEL注入  spring expression language spring表达式语言
+    -->
+    <bean name="user4" class="com.spring.beans.User">
+        <property name="name" value="#{user.name}"/>
+        <property name="age" value="#{user3.age}"/>
+        <property name="car" ref="car"/>
+    </bean>
 
+    <!--=======================复杂类型注入==================================-->
+    <!--数组注入-->
+    <bean name="cb" class="com.spring.Injection.CollectionBean">
+        <!--如果只注入一个值，可直接使用value或者ref-->
+        <property name="arr">
+            <!--多元素使用这样注入-->
+            <array>
+                <value>tom</value>
+                <value>jerry</value>
+                <ref bean="user4"></ref>
+            </array>
+        </property>
+    </bean>
+    <!--list注入-->
+    <bean name="list" class="com.spring.Injection.CollectionBean">
+        <property name="list">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <ref bean="car"/>
+            </list>
+        </property>
+
+    </bean>
+    <!--map注入-->
+    <bean name="map" class="com.spring.Injection.CollectionBean">
+        <property name="map">
+            <map>
+                <entry key="a" value="1"/>
+                <entry key="b" value-ref="car"/>
+                <entry key-ref="user" value-ref="car"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--properties注入-->
+    <bean name="properties" class="com.spring.Injection.CollectionBean">
+        <property name="properties">
+            <props>
+                <prop key="driverClass">com.jdbc.mysql.Driver</prop>
+                <prop key="driver">MySQL</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
