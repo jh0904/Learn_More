@@ -20,7 +20,7 @@
     <!--将UserDao放入容器-->
     <bean name="userDao" class="com.spring2.jdbc.UserDaoImpl" >
         <!-- <property name="jt" ref="jdbcTemplate" />-->
-        <property name="dataSource" ref="dataSource" ></property>
+        <property name="dataSource" ref="dataSource" />
     </bean>
 
 </beans>
