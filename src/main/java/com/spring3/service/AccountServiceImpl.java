@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * com.spring3.service
@@ -37,6 +38,8 @@ public class AccountServiceImpl implements AccountService {
 		//调用doInTransactionWithoutResult方法
 
 	}
+@RequestMapping
+
 
 	public AccountDao getAd() {
 		return ad;
