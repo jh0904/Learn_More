@@ -17,5 +17,7 @@ public class Demo {
 		System.out.println (demo.getClass ().getClassLoader ().getParent ().getParent ());
 		System.out.println (demo.getClass ().getClassLoader ().getParent ());
 		System.out.println (demo.getClass ().getClassLoader ());
+
+		new Thread (()->{},"A").start ();
 	}
 }
