@@ -5,7 +5,7 @@ package jvm.test;
  *
  * @author jh
  * @date 2018/8/27 14:18
- * description:
+ * description:JVM的内存区域，以及各自的线程安全性。以及基本的GC算法，以及优化的简单分析。
  */
 public class Demo2 {
 	public static void main(String[] args) {
