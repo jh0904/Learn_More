@@ -10,6 +10,7 @@
     <modules>
         <module>webService</module>
         <module>Data_interaction</module>
+        <module>YangG</module>
     </modules>
     <packaging>pom</packaging>
 
