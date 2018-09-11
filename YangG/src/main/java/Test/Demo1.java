@@ -1,6 +1,7 @@
 package Test;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Test
@@ -11,13 +12,17 @@ import java.util.Random;
  */
 public class Demo1 {
 	public static void main(String[] args) {
-		/*Scanner sc=new Scanner (System.in);
+		Scanner sc=new Scanner (System.in);
+		int n=Integer.parseInt (sc.nextLine ());
 
-		int n = sc.nextInt ();
-		int[] arr=new int[n];
-		for (int i = 0; i <n ; i++) {
-			arr[i]=sc.nextInt ();
-		}*/
-		System.out.println (new Random ().nextInt (5) );
+		for (int i = 0; i < n; i++) {
+			if(new Random ().nextInt (2)==1){
+				System.out.println ("Yes");
+			}else{
+				System.out.println ("No");
+			}
+
+		}
 	}
+
 }
