@@ -11,6 +11,7 @@
         <module>webService</module>
         <module>Data_interaction</module>
         <module>YangG</module>
+        <module>Mode</module>
     </modules>
     <packaging>pom</packaging>
 
